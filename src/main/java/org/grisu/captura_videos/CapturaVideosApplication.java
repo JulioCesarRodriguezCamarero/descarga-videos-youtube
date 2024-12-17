@@ -1,13 +1,14 @@
 package org.grisu.captura_videos;
 
-import org.springframework.boot.SpringApplication;
+import javafx.application.Application;
+import org.grisu.captura_videos.presentacion.SistemaVideosFx;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CapturaVideosApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CapturaVideosApplication.class, args);
+        Application.launch(SistemaVideosFx.class, args);
     }
 
 }
