@@ -15,12 +15,13 @@ import java.util.Collections;
 public class TabalaEditaBD {
     private final AnchorPane anchorPane;
     private final VideoServicioImpl videoServicio;
-
+    private final TableView<Video> tableView ;
 
 
     public TabalaEditaBD(AnchorPane anchorPane, VideoServicioImpl videoServicio) {
         this.anchorPane = anchorPane;
         this.videoServicio = videoServicio;
+        this.tableView = new TableView<>();
     }
 
     public void creaTablaBD() {
@@ -28,7 +29,7 @@ public class TabalaEditaBD {
         anchorPane.getChildren().clear();
 
         // Configuración de la tabla
-        TableView<Video> tableView = new TableView<>();
+
         tableView.setLayoutX(20);
         tableView.setLayoutY(70);
         tableView.setPrefWidth(1100); // Ampliamos el ancho para incluir todas las columnas
@@ -37,7 +38,7 @@ public class TabalaEditaBD {
         // Crear columnas
         TableColumn<Video, Long> columnaId = new TableColumn<>("ID");
         columnaId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        columnaId.setPrefWidth(100); // Ajustamos el ancho
+        columnaId.setPrefWidth(30); // Ajustamos el ancho
 
         TableColumn<Video, String> columnaTitulo = new TableColumn<>("Título");
         columnaTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
@@ -45,11 +46,11 @@ public class TabalaEditaBD {
 
         TableColumn<Video, String> columnaUrlOrigen = new TableColumn<>("URL Origen");
         columnaUrlOrigen.setCellValueFactory(new PropertyValueFactory<>("urlOrigen"));
-        columnaUrlOrigen.setPrefWidth(250); // Ajustamos el ancho para URLs
+        columnaUrlOrigen.setPrefWidth(200); // Ajustamos el ancho para URLs
 
         TableColumn<Video, String> columnaUrlDestino = new TableColumn<>("URL Destino");
         columnaUrlDestino.setCellValueFactory(new PropertyValueFactory<>("urlDestino"));
-        columnaUrlDestino.setPrefWidth(250);
+        columnaUrlDestino.setPrefWidth(50);
 
         TableColumn<Video, String> columnaDescripcion = new TableColumn<>("Descripción");
         columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
@@ -57,7 +58,7 @@ public class TabalaEditaBD {
 
         TableColumn<Video, String> columnaDuracion = new TableColumn<>("Duración");
         columnaDuracion.setCellValueFactory(new PropertyValueFactory<>("duracion"));
-        columnaDuracion.setPrefWidth(100);
+        columnaDuracion.setPrefWidth(50);
 
         TableColumn<Video, String> columnaIdioma = new TableColumn<>("Idioma Original");
         columnaIdioma.setCellValueFactory(new PropertyValueFactory<>("idiomaOriginal"));
@@ -69,7 +70,7 @@ public class TabalaEditaBD {
 
         TableColumn<Video, String> columnaCapacidad = new TableColumn<>("Tamaño");
         columnaCapacidad.setCellValueFactory(new PropertyValueFactory<>("capacidad"));
-        columnaCapacidad.setPrefWidth(100);
+        columnaCapacidad.setPrefWidth(50);
 
 // Evita el warning con Collections.addAll
         Collections.addAll(
@@ -92,4 +93,66 @@ public class TabalaEditaBD {
         anchorPane.getChildren().add(tableView);
 
     }
-}
+
+    public void editarFila() {
+        // Verificar si hay una fila seleccionada
+        Video videoSeleccionado = tableView.getSelectionModel().getSelectedItem();
+
+        if (videoSeleccionado == null) {
+            System.out.println("No se ha seleccionado ninguna fila para editar.");
+            return;
+        }
+
+        System.out.println("Editando el video: " + videoSeleccionado);
+
+        // Hacer las columnas editables (si aún no lo son)
+        hacerColumnasEditables();
+
+        // Opcionalmente, puedes implementar lógica adicional para guardar los datos editados.
+    }
+
+    private void hacerColumnasEditables() {
+        // Configurar la tabla como editable
+        tableView.setEditable(true);
+
+   /*     // Columna Título
+        columnaTitulo.setCellFactory(TextFieldTableCell.forTableColumn());
+        columnaTitulo.setOnEditCommit(event -> {
+            Video video = event.getRowValue(); // Obtiene la fila actual
+            video.setTitulo(event.getNewValue()); // Actualiza el valor del atributo
+            System.out.println("Título actualizado: " + video.getTitulo());
+            // Persistir los cambios en la base de datos
+            videoServicio.actualizarVideo(video);
+        });
+
+        // Columna Descripción
+        columnaDescripcion.setCellFactory(TextFieldTableCell.forTableColumn());
+        columnaDescripcion.setOnEditCommit(event -> {
+            Video video = event.getRowValue();
+            video.setDescripcion(event.getNewValue());
+            System.out.println("Descripción actualizada: " + video.getDescripcion());
+            videoServicio.actualizarVideo(video);
+        });
+
+        // Columna Idioma Original
+        columnaIdioma.setCellFactory(TextFieldTableCell.forTableColumn());
+        columnaIdioma.setOnEditCommit(event -> {
+            Video video = event.getRowValue();
+            video.setIdiomaOriginal(event.getNewValue());
+            System.out.println("Idioma Original actualizado: " + video.getIdiomaOriginal());
+            videoServicio.actualizarVideo(video);
+        });
+
+        // Columna Traducción
+        columnaTraduccion.setCellFactory(TextFieldTableCell.forTableColumn());
+        columnaTraduccion.setOnEditCommit(event -> {
+            Video video = event.getRowValue();
+            video.setIdiomaTraduccion(event.getNewValue());
+            System.out.println("Traducción actualizada: " + video.getIdiomaTraduccion());
+            videoServicio.actualizarVideo(video);
+        });*/
+
+
+    }
+    }
+

@@ -126,6 +126,12 @@ public class IndexControlador implements Initializable {
 
     }
 
+    @FXML
+    private void handlebotonEditarBD(ActionEvent event) {
+
+        this.tablaEditaBD.editarFila();
+    }
+
     private void mostrarMensaje(String titulo, String contenido) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle(titulo);

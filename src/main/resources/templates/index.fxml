@@ -7,88 +7,76 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="874.0" prefWidth="1390.0" style="-fx-background-color: #df9561;"
-            xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.grisu.captura_videos.controladores.IndexControlador">
+<AnchorPane prefHeight="874.0" prefWidth="1390.0" style="-fx-background-color: #df9561;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.grisu.captura_videos.controladores.IndexControlador">
     <children>
 
         <!-- Etiqueta de bienvenida -->
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="10.0" prefHeight="28.0"
-               prefWidth="1317.0" style="-fx-background-color: #df6c49;" text="Gestión de Videos" textAlignment="RIGHT">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="10.0" prefHeight="28.0" prefWidth="1317.0" style="-fx-background-color: #df6c49;" text="Gestión de Videos" textAlignment="RIGHT">
             <font>
-                <Font name="Baskerville Old Face" size="24.0"/>
+                <Font name="Baskerville Old Face" size="24.0" />
             </font>
         </Label>
         <VBox layoutX="17.0" layoutY="50.0" prefHeight="815.0" prefWidth="149.0">
             <children>
-                <Button fx:id="botonDescargaWeb" mnemonicParsing="false" onAction="#handleBotonDescargaWeb"
-                        prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #00cc7f;" text="Descarga Web"
-                        textFill="#243209">
+                <Button fx:id="botonDescargaWeb" mnemonicParsing="false" onAction="#handleBotonDescargaWeb" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #00cc7f;" text="Descarga Web" textFill="#243209">
                     <font>
-                        <Font name="Baskerville Old Face" size="18.0"/>
+                        <Font name="Baskerville Old Face" size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="30.0"/>
+                        <Insets top="30.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="botonEditaWeb" mnemonicParsing="false" onAction="#handleBotonEditaWeb" prefHeight="27.0"
-                        prefWidth="153.0" style="-fx-background-color: #00cc7f;" text="Edita VideoWeb"
-                        textFill="#243209">
+                <Button fx:id="botonEditaWeb" mnemonicParsing="false" onAction="#handleBotonEditaWeb" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #00cc7f;" text="Edita VideoWeb" textFill="#243209">
                     <font>
-                        <Font name="Baskerville Old Face" size="18.0"/>
+                        <Font name="Baskerville Old Face" size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="30.0"/>
+                        <Insets top="30.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="botonGuardaBD" mnemonicParsing="false" onAction="#handleBotonGuardaBD" prefHeight="27.0" prefWidth="153.0"
-                        style="-fx-background-color: #103229;" text="Guardar BBDD" textFill="#dbe9c2">
+                <Button fx:id="botonGuardaBD" mnemonicParsing="false" onAction="#handleBotonGuardaBD" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #00cc7f;" text="Guardar BBDD" textFill="#243209">
                     <font>
-                        <Font name="Baskerville Old Face" size="18.0"/>
+                        <Font name="Baskerville Old Face" size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="30.0"/>
+                        <Insets top="30.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="botonListarBD" mnemonicParsing="false" onAction="#handleBotonListarBD" prefHeight="27.0" prefWidth="153.0"
-                        style="-fx-background-color: #103229;" text="Listar Videos" textFill="#dbe9c2">
+                <Button fx:id="botonListarBD" mnemonicParsing="false" onAction="#handleBotonListarBD" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #103229;" text="Listar Videos" textFill="#dbe9c2">
                     <font>
-                        <Font name="Baskerville Old Face" size="18.0"/>
+                        <Font name="Baskerville Old Face" size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="30.0"/>
+                        <Insets top="100.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="botonEditarBD" mnemonicParsing="false" prefHeight="27.0" prefWidth="153.0"
-                        style="-fx-background-color: #103229;" text="Editar video" textFill="#dbe9c2">
+                <Button fx:id="botonEditarBD" mnemonicParsing="false" onAction="#handlebotonEditarBD" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #103229;" text="Editar video" textFill="#dbe9c2">
                     <font>
-                        <Font name="Baskerville Old Face" size="18.0"/>
+                        <Font name="Baskerville Old Face" size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="30.0"/>
+                        <Insets top="30.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="botonActualizaBD" mnemonicParsing="false" prefHeight="27.0" prefWidth="153.0"
-                        style="-fx-background-color: #103229;" text="Actualiza video" textFill="#dbe9c2">
+                <Button fx:id="botonActualizaBD" mnemonicParsing="false" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #103229;" text="Actualiza video" textFill="#dbe9c2">
                     <font>
-                        <Font name="Baskerville Old Face" size="18.0"/>
+                        <Font name="Baskerville Old Face" size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="30.0"/>
+                        <Insets top="30.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="botonEliminaBD" mnemonicParsing="false" prefHeight="27.0" prefWidth="153.0"
-                        style="-fx-background-color: #103229;" text="Eliminar video" textFill="#dbe9c2">
+                <Button fx:id="botonEliminaBD" mnemonicParsing="false" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #103229;" text="Eliminar video" textFill="#dbe9c2">
                     <font>
-                        <Font name="Baskerville Old Face" size="18.0"/>
+                        <Font name="Baskerville Old Face" size="18.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="30.0"/>
+                        <Insets top="30.0" />
                     </VBox.margin>
                 </Button>
             </children>
         </VBox>
-        <AnchorPane fx:id="anchorEdicion" layoutX="174.0" layoutY="50.0" prefHeight="821.0" prefWidth="1166.0"/>
+        <AnchorPane fx:id="anchorEdicion" layoutX="174.0" layoutY="50.0" prefHeight="821.0" prefWidth="1166.0" />
 
     </children>
 </AnchorPane>
