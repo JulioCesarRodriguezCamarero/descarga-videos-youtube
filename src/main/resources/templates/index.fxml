@@ -50,7 +50,7 @@
                         <Insets top="30.0"/>
                     </VBox.margin>
                 </Button>
-                <Button fx:id="botonListarBD" mnemonicParsing="false" prefHeight="27.0" prefWidth="153.0"
+                <Button fx:id="botonListarBD" mnemonicParsing="false" onAction="#handleBotonListarBD" prefHeight="27.0" prefWidth="153.0"
                         style="-fx-background-color: #103229;" text="Listar Videos" textFill="#dbe9c2">
                     <font>
                         <Font name="Baskerville Old Face" size="18.0"/>

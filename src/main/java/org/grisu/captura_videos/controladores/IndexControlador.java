@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import org.grisu.captura_videos.controladores.bd.TabalaEditaBD;
 import org.grisu.captura_videos.controladores.web.FormularioWeb;
 import org.grisu.captura_videos.controladores.web.TablaEditaWeb;
 import org.grisu.captura_videos.controladores.web.VideoWeb;
@@ -44,8 +45,12 @@ public class IndexControlador implements Initializable {
     private Button botonListarBD;
     @Autowired
     private VideoServicioImpl videoServicio;
+
     // Añadimos una referencia a la tabla para reusarla
     private TablaEditaWeb tablaEditaWeb;
+
+    // Añadimos una referencia a la tabla BBDD para reusarla
+    private TabalaEditaBD tablaEditaBD;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,7 +77,11 @@ public class IndexControlador implements Initializable {
         this.tablaEditaWeb = new TablaEditaWeb(anchorEdicion);
         this.tablaEditaWeb.crearTabla();
 
+
+
+
     }
+
     @FXML
     private void handleBotonGuardaBD(ActionEvent event) {
         if (tablaEditaWeb == null) {
@@ -88,7 +97,7 @@ public class IndexControlador implements Initializable {
         }
 
         try {
-           Video video;
+            Video video;
             // Iterar sobre los elementos de la tabla y guardarlos en la base de datos
             for (VideoWeb videoWeb : tablaVideos.getItems()) {
                 video = new Video();
@@ -102,9 +111,19 @@ public class IndexControlador implements Initializable {
             }
             mostrarMensaje("Éxito", "Los datos se han guardado correctamente en la base de datos.");
         } catch (Exception e) {
-            e.printStackTrace();
+
             mostrarMensaje("Error", "Se produjo un error al guardar los datos en la base de datos.");
         }
+    }
+
+    @FXML
+    private void handleBotonListarBD(ActionEvent event) {
+        anchorEdicion.getChildren().clear();
+        // Crear y configurar tabla tablaEditaBD
+        this.tablaEditaBD = new TabalaEditaBD(anchorEdicion,videoServicio);
+        this.tablaEditaBD.creaTablaBD();
+
+
     }
 
     private void mostrarMensaje(String titulo, String contenido) {
@@ -114,6 +133,6 @@ public class IndexControlador implements Initializable {
         alerta.setContentText(contenido);
         alerta.showAndWait();
     }
-    }
+}
 
 

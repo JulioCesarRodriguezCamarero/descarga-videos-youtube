@@ -9,10 +9,10 @@ public class Video {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // Identificador único de cada video
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String titulo; // Título del video
 
-    @Column(nullable = false)
+    @Column(nullable = false,unique = true)
     private String urlOrigen; // URL o ruta del video original
 
     @Column
@@ -63,5 +63,41 @@ public class Video {
 
     public void setCapacidad(String capacidad) {
         this.capacidad = capacidad;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getUrlOrigen() {
+        return urlOrigen;
+    }
+
+    public String getUrlDestino() {
+        return urlDestino;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getDuracion() {
+        return duracion;
+    }
+
+    public String getIdiomaOriginal() {
+        return idiomaOriginal;
+    }
+
+    public String getIdiomaTraduccion() {
+        return idiomaTraduccion;
+    }
+
+    public String getCapacidad() {
+        return capacidad;
     }
 }

@@ -2,6 +2,7 @@ package org.grisu.captura_videos.servicio;
 
 import org.grisu.captura_videos.modelo.Video;
 import org.grisu.captura_videos.repositorio.VideoRepositorio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,8 @@ public class VideoServicioImpl implements VideoServicioInterface {
 
     private final VideoRepositorio videoRepositorio;
 
+
+    @Autowired
     public VideoServicioImpl(VideoRepositorio videoRepositorio) {
         this.videoRepositorio = videoRepositorio;
     }
