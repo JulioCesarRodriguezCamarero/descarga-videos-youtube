@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import org.grisu.captura_videos.modelo.Video;
 import org.grisu.captura_videos.servicio.VideoServicioImpl;
@@ -95,64 +96,74 @@ public class TabalaEditaBD {
     }
 
     public void editarFila() {
-        // Verificar si hay una fila seleccionada
-        Video videoSeleccionado = tableView.getSelectionModel().getSelectedItem();
-
-        if (videoSeleccionado == null) {
-            System.out.println("No se ha seleccionado ninguna fila para editar.");
-            return;
-        }
-
-        System.out.println("Editando el video: " + videoSeleccionado);
-
-        // Hacer las columnas editables (si aún no lo son)
-        hacerColumnasEditables();
-
-        // Opcionalmente, puedes implementar lógica adicional para guardar los datos editados.
-    }
-
-    private void hacerColumnasEditables() {
         // Configurar la tabla como editable
         tableView.setEditable(true);
 
-   /*     // Columna Título
+        // Hacer todas las columnas editables
+
+        // Columna Título
+        TableColumn<Video, String> columnaTitulo = (TableColumn<Video, String>) tableView.getColumns().get(1); // Índice de la columna título
         columnaTitulo.setCellFactory(TextFieldTableCell.forTableColumn());
         columnaTitulo.setOnEditCommit(event -> {
-            Video video = event.getRowValue(); // Obtiene la fila actual
-            video.setTitulo(event.getNewValue()); // Actualiza el valor del atributo
+            Video video = event.getRowValue();
+            video.setTitulo(event.getNewValue());
             System.out.println("Título actualizado: " + video.getTitulo());
-            // Persistir los cambios en la base de datos
-            videoServicio.actualizarVideo(video);
+            videoServicio.guardarVideo(video); // Optativo: Persistir los cambios en la base de datos
+        });
+
+        // Columna URL Origen
+        TableColumn<Video, String> columnaUrlOrigen = (TableColumn<Video, String>) tableView.getColumns().get(2);
+        columnaUrlOrigen.setCellFactory(TextFieldTableCell.forTableColumn());
+        columnaUrlOrigen.setOnEditCommit(event -> {
+            Video video = event.getRowValue();
+            video.setUrlOrigen(event.getNewValue());
+            System.out.println("URL Origen actualizado: " + video.getUrlOrigen());
+            videoServicio.guardarVideo(video);
+        });
+
+        // Columna URL Destino
+        TableColumn<Video, String> columnaUrlDestino = (TableColumn<Video, String>) tableView.getColumns().get(3);
+        columnaUrlDestino.setCellFactory(TextFieldTableCell.forTableColumn());
+        columnaUrlDestino.setOnEditCommit(event -> {
+            Video video = event.getRowValue();
+            video.setUrlDestino(event.getNewValue());
+            System.out.println("URL Destino actualizado: " + video.getUrlDestino());
+            videoServicio.guardarVideo(video);
         });
 
         // Columna Descripción
+        TableColumn<Video, String> columnaDescripcion = (TableColumn<Video, String>) tableView.getColumns().get(4);
         columnaDescripcion.setCellFactory(TextFieldTableCell.forTableColumn());
         columnaDescripcion.setOnEditCommit(event -> {
             Video video = event.getRowValue();
             video.setDescripcion(event.getNewValue());
             System.out.println("Descripción actualizada: " + video.getDescripcion());
-            videoServicio.actualizarVideo(video);
+            videoServicio.guardarVideo(video);
         });
-
-        // Columna Idioma Original
+        // Columna Descripción
+        TableColumn<Video, String> columnaIdioma = (TableColumn<Video, String>) tableView.getColumns().get(6);
         columnaIdioma.setCellFactory(TextFieldTableCell.forTableColumn());
         columnaIdioma.setOnEditCommit(event -> {
             Video video = event.getRowValue();
             video.setIdiomaOriginal(event.getNewValue());
-            System.out.println("Idioma Original actualizado: " + video.getIdiomaOriginal());
-            videoServicio.actualizarVideo(video);
+            System.out.println("Idioma actualizada: " + video.getIdiomaOriginal());
+            videoServicio.guardarVideo(video);
         });
-
-        // Columna Traducción
+        // Columna Descripción
+        TableColumn<Video, String> columnaTraduccion = (TableColumn<Video, String>) tableView.getColumns().get(7);
         columnaTraduccion.setCellFactory(TextFieldTableCell.forTableColumn());
         columnaTraduccion.setOnEditCommit(event -> {
             Video video = event.getRowValue();
             video.setIdiomaTraduccion(event.getNewValue());
-            System.out.println("Traducción actualizada: " + video.getIdiomaTraduccion());
-            videoServicio.actualizarVideo(video);
-        });*/
+            System.out.println("Idioma actualizada: " + video.getIdiomaTraduccion());
+            videoServicio.guardarVideo(video);
+        });
 
 
+
+        // Configurar y permitir edición en las demás columnas según sea necesario, como Duración, Idioma, etc.
     }
+
+
     }
 

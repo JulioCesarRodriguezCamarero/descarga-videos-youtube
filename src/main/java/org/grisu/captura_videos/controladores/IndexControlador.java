@@ -128,8 +128,11 @@ public class IndexControlador implements Initializable {
 
     @FXML
     private void handlebotonEditarBD(ActionEvent event) {
-
-        this.tablaEditaBD.editarFila();
+        if (tablaEditaBD == null) {
+            mostrarMensaje("Error", "La tabla no está cargada. Primero lista los datos de la base de datos.");
+            return;
+        }
+        tablaEditaBD.editarFila();
     }
 
     private void mostrarMensaje(String titulo, String contenido) {
