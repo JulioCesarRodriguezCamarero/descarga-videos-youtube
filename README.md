@@ -19,8 +19,10 @@ Si decides cambiar manualmente a un padre diferente y realmente deseas la herenc
 
 # Importante:
 ## programas_yt-dlp
-Copia el directorio que está en este repositorio, pégalo en C:
-Entra en variables de entorno y edita el PATH, introduce la dirección del archivo programas_yt-dlp
+Descarga los archivos yt-dlp, ffmpeg, ffplay, ffprobe
+Los encontrarás en el enlace de abajo
+Crea un directorio y pega los archivos
+Entra en variables de entorno y edita el PATH, introduce la ruta donde has creadoel direcctorio
 Estos programas son importantes para la descarga de videos desde la web
 
 ### Más información
